@@ -4,10 +4,11 @@
 ### Apps to Download
 - VS Code
 - iTerm2
+- Google Chrome _(if not already installed)_
 
 
 ### Setup in CLI
-1. Install Xcode Command Line Tools:
+1. Open iTerm2, and install Xcode Command Line Tools:
     ```bash
     xcode-select --install
     ```
@@ -19,7 +20,7 @@
     ```bash
     brew install node
     ```
-4. Set up SSH keys: [link for reference](https://www.freecodecamp.org/news/git-ssh-how-to/)
+4. Set up SSH keys: ([Check out this article for more info](https://www.freecodecamp.org/news/git-ssh-how-to/))
     - Check if SSH keys exist: (likely no)
       ```bash
       ls -al ~/.ssh
@@ -40,7 +41,7 @@
       ```bash
       ls -al ~/.ssh
       ```
-5. Add new SSH key to ssh-agent:
+5. Add your newly created SSH key to ssh-agent:
     - Check to see if `ssh-agent` is running:
         ```bash
         eval "$(ssh-agent -s)"
@@ -49,7 +50,7 @@
       ```bash
       ssh-add ~/.ssh/id_rsa
       ```
-6. Copy your public SSH key and add to GitHub:
+6. Copy your public SSH key and add to your GitHub profile:
     - Print the contents of your public key:
       ```bash
       cat ~/.ssh/id_rsa.pub
@@ -63,9 +64,8 @@
       ssh -T git@github.com
       ```
     - You should see this output: 
-      ```bash
-      Hi your_user_name! You/'ve successfully authenticated, but GitHub does not provide shell access.
-      ```
+
+      `Hi your_user_name! You've successfully authenticated, but GitHub does not provide shell access.`
 
 
 ### Install .NET
@@ -73,7 +73,7 @@
 
 
 ### Setup NuGet
-- Follow [this SEB wiki](https://wiki.sebrands.com/pages/viewpage.action?spaceKey=PLAT&title=GitHub+Package+Repository) up through `List NuGet Sources`
+- Follow [this SEB wiki](https://wiki.sebrands.com/pages/viewpage.action?spaceKey=PLAT&title=GitHub+Package+Repository) up to the `List NuGet Sources` section.
 
 
 ### Download Repos
@@ -86,7 +86,7 @@
 - C#
 - Path Intellisense
 
-### Setup `.vscode` Folder in `af-coach-site`
+### Setup the `.vscode` Folder in `af-coach-site`
 - This folder is included in the .gitignore, so you need to make one to use locally.
 1. Create a folder called `.vscode`, and two files inside: `launch.json` and `tasks.json`
 2. In `launch.json`, add the following code:
@@ -174,6 +174,11 @@
       ]
     }
     ```
+
+
+### Install React Developer Tools Extension to Chrome
+- Visit [here](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) and add the extension to your Chrome browser.
+- The React Developer Tools `Components` tab is essential to find your way around the UI of the app and find the component you need to work on.
 
 
 ### Fun Stuff
