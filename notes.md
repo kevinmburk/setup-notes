@@ -19,7 +19,7 @@
     ```bash
     brew install node
     ```
-4. Set up SSH keys: (link for reference: `https://www.freecodecamp.org/news/git-ssh-how-to/`)
+4. Set up SSH keys: [link for reference](https://www.freecodecamp.org/news/git-ssh-how-to/)
     - Check if SSH keys exist: (likely no)
       ```bash
       ls -al ~/.ssh
@@ -30,7 +30,7 @@
       ```
     - Generate a new set of keys:
       ```bash
-      ssh-keygen -t rsa -b 4096 -C kevin.burk@sebrands.com
+      ssh-keygen -t rsa -b 4096 -C your.email@sebrands.com
       ```
     - It will ask you what to name the files for your new SSH keys, just name them: 
       ```bash
@@ -62,15 +62,18 @@
       ```bash
       ssh -T git@github.com
       ```
-    - You should see this output: `Hi your_user_name! You've successfully authenticated, but GitHub does not provide shell access.`
+    - You should see this output: 
+      ```bash
+      Hi your_user_name! You/'ve successfully authenticated, but GitHub does not provide shell access.
+      ```
 
 
 ### Install .NET
-- Visit [here](https://dotnet.microsoft.com/download) and download .NET Core 5.0
+- Visit [.NET](https://dotnet.microsoft.com/download) and download `.NET Core 5.0` and `.NET Core 3.1`, you'll need both.
 
 
 ### Setup NuGet
-- Follow [this wiki](https://wiki.sebrands.com/pages/viewpage.action?spaceKey=PLAT&title=GitHub+Package+Repository) up through `List NuGet Sources`.
+- Follow [this SEB wiki](https://wiki.sebrands.com/pages/viewpage.action?spaceKey=PLAT&title=GitHub+Package+Repository) up through `List NuGet Sources`
 
 
 ### Download Repos
@@ -82,6 +85,95 @@
 ### Required VS Code Extensions
 - C#
 - Path Intellisense
+
+### Setup `.vscode` Folder in `af-coach-site`
+- This folder is included in the .gitignore, so you need to make one to use locally.
+1. Create a folder called `.vscode`, and two files inside: `launch.json` and `tasks.json`
+2. In `launch.json`, add the following code:
+    ```json
+    {
+      // Use IntelliSense to find out which attributes exist for C# debugging
+      // Use hover for the description of the existing attributes
+      // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+      "version": "0.2.0",
+      "configurations": [
+        {
+          "name": ".NET Core Launch (web)",
+          "type": "coreclr",
+          "request": "launch",
+          "preLaunchTask": "build",
+          // If you have changed target frameworks, make sure to update the program path.
+          "program": "${workspaceFolder}/Af.Coach.Web/bin/Debug/netcoreapp3.1/Af.Coach.Web.dll",
+          "args": [],
+          "cwd": "${workspaceFolder}/Af.Coach.Web",
+          "stopAtEntry": false,
+          // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
+          "serverReadyAction": {
+            "action": "openExternally",
+            "pattern": "^\\s*Now listening on:\\s+(https?://\\S+)"
+          },
+          "env": {
+            "ASPNETCORE_ENVIRONMENT": "Development",
+            "ASPNETCORE_URLS": "http://localhost:6002"
+          },
+          "sourceFileMap": {
+            "/Views": "${workspaceFolder}/Views"
+          }
+        },
+        {
+          "name": ".NET Core Attach",
+          "type": "coreclr",
+          "request": "attach",
+          "processId": "${command:pickProcess}"
+        }
+      ]
+    }
+    ```
+3. In `tasks.json`, add the following code:
+    ```json
+    {
+      "version": "2.0.0",
+      "tasks": [
+        {
+          "label": "build",
+          "command": "dotnet",
+          "type": "process",
+          "args": [
+            "build",
+            "${workspaceFolder}/Af.Coach.Web/Af.Coach.Web.csproj",
+            "/property:GenerateFullPaths=true",
+            "/consoleloggerparameters:NoSummary"
+          ],
+          "problemMatcher": "$msCompile"
+        },
+        {
+          "label": "publish",
+          "command": "dotnet",
+          "type": "process",
+          "args": [
+            "publish",
+            "${workspaceFolder}/Af.Coach.Web/Af.Coach.Web.csproj",
+            "/property:GenerateFullPaths=true",
+            "/consoleloggerparameters:NoSummary"
+          ],
+          "problemMatcher": "$msCompile"
+        },
+        {
+          "label": "watch",
+          "command": "dotnet",
+          "type": "process",
+          "args": [
+            "watch",
+            "run",
+            "${workspaceFolder}/Af.Coach.Web/Af.Coach.Web.csproj",
+            "/property:GenerateFullPaths=true",
+            "/consoleloggerparameters:NoSummary"
+          ],
+          "problemMatcher": "$msCompile"
+        }
+      ]
+    }
+    ```
 
 
 ### Fun Stuff
